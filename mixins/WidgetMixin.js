@@ -1,7 +1,6 @@
-var React = require('react');
-var {
-  Image
-} = require('react-native')
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Image } from 'react-native';
 
 
 var GiftedFormManager = require('../GiftedFormManager');
@@ -15,21 +14,22 @@ module.exports = {
   },
 
   propTypes: {
-    name: React.PropTypes.string,
-    title: React.PropTypes.string,
-    formName: React.PropTypes.string,
+    name: PropTypes.string,
+    title: PropTypes.string,
+    formName: PropTypes.string,
     // image: ,
-    widgetStyles: React.PropTypes.object,
-    formStyles: React.PropTypes.object,
-    validationImage: React.PropTypes.bool,
-    openModal: React.PropTypes.func,
+    widgetStyles: PropTypes.object,
+    formStyles: PropTypes.object,
+    validationImage: PropTypes.bool,
+    openModal: PropTypes.func,
     // navigator: ,
-    onFocus: React.PropTypes.func,
-    onBlur: React.PropTypes.func,
-    validateOnEmpty: React.PropTypes.bool,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
+    validateOnEmpty: PropTypes.bool,
     // If we want to store the state elsewhere (Redux store, for instance), we can use value and Form's onValueChange prop
-    value: React.PropTypes.any,
-    showInlineErrorMessage: React.PropTypes.bool,
+    value: PropTypes.any,
+    // disable inline error message
+    showInlineErrorMessage: PropTypes.bool,
   },
 
   getDefaultProps() {
@@ -43,10 +43,8 @@ module.exports = {
       validationImage: true,
       openModal: null,
       navigator: null,
-      onFocus: () => {
-      },
-      onBlur: () => {
-      },
+      onFocus: () => {},
+      onBlur: () => {},
       validateOnEmpty: false,
       showInlineErrorMessage: true
     };
@@ -139,10 +137,7 @@ module.exports = {
     var validators = GiftedFormManager.getValidators(this.props.formName, this.props.name);
     if (Array.isArray(validators.validate)) {
       if (validators.validate.length > 0) {
-        var validation = GiftedFormManager.validateAndParseOne(this.props.name, value, {
-          validate: validators.validate,
-          title: validators.title
-        });
+        var validation = GiftedFormManager.validateAndParseOne(this.props.name, value, {validate: validators.validate, title: validators.title});
         if (validation.isValid === false) {
           this.setState({
             validationErrorMessage: validation.message
