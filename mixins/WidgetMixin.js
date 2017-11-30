@@ -46,7 +46,7 @@ module.exports = {
       onFocus: () => {},
       onBlur: () => {},
       validateOnEmpty: false,
-      showInlineErrorMessage: true
+      showInlineErrorMessage: false
     };
   },
 
