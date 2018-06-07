@@ -29,6 +29,7 @@ module.exports = createReactClass({
           onBlur: this.props.onBlur,
           onValidation: this.props.onValidation,
           onValueChange: this.props.onValueChange,
+          form: this
         });
       }
     });
