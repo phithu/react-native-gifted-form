@@ -6,7 +6,7 @@ import {
   Platform,
   Dimensions
 } from 'react-native';
-
+import ViewOverflow from 'react-native-view-overflow';
 var GiftedFormManager = require('../GiftedFormManager');
 
 module.exports = {
@@ -147,15 +147,15 @@ module.exports = {
       );
     }
     return (
-      <View
-        ref='container'
-        style={viewStyle}
-        keyboardDismissMode='on-drag' // its working on View ?
+        <ViewOverflow
+            ref='container'
+            style={viewStyle}
+            keyboardDismissMode='on-drag' // its working on View ?
 
-        {...this.props}
-      >
-        {this.childrenWithProps()}
-      </View>
+            {...this.props}
+        >
+          {this.childrenWithProps()}
+        </ViewOverflow>
     );
   },
 };
