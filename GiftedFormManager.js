@@ -355,7 +355,11 @@ class Manager {
             if (validated.results[k].hasOwnProperty(j)) {
               if (validated.results[k][j].isValid === false) {
                 let defaultMessage = !!validated.results[k][j].value ? notValidMessage : requiredMessage;
-                errors.push(validated.results[k][j].message || defaultMessage.replace('{TITLE}', validated.results[k][j].title));
+                const message = validated.results[k][j].message || defaultMessage.replace('{TITLE}', validated.results[k][j].title);
+                errors.push({
+                  key: k,
+                  message
+                });
                 // displaying only 1 error per widget
                 break;
               }
