@@ -1,5 +1,5 @@
 {
-  "name": "@nois/react-native-gifted-form",
+  "name": "react-native-gifted-form",
   "version": "0.1.2",
   "description": "Form component for React Native",
   "main": "GiftedForm.js",
